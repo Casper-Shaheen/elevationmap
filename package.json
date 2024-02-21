@@ -1,0 +1,11 @@
+{
+  "name": "elevationmap",
+  "version": "1.0.0",
+  "description": "Graphically displays elevation at specific coordinates over specific range. 2D functionality Alpha, 3D functionality Beta.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Casper Shaheen",
+  "license": "ISC"
+}
