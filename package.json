@@ -4,6 +4,7 @@
   "description": "Graphically displays elevation at specific coordinates over specific range. 2D functionality Alpha, 3D functionality Beta.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Casper Shaheen",

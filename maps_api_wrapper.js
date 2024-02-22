@@ -27,6 +27,9 @@ async function getElevationData(configuration) {
                 data += chunk;
             });
             res.on('end', () => {
+                if(res.statusCode==400) {
+                    console.log(data);
+                }
                 resolve(JSON.parse(data));
             });
         });

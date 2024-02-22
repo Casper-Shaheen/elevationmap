@@ -38,11 +38,11 @@ function loadElevationValuesToFile(filename, elevations) {
 async function main() {
     
     let configuration = {
-        lat: 86.725316, 
-        lng: 27.788141,
+        lat: 27.9881 - (50*0.001),
+        lng:  86.9250 - (50*0.001),
         latstep: 0.001,
         lngstep: 0.001,
-        steps: 400
+        steps: 100
     };
     
     let elevationValues = [];

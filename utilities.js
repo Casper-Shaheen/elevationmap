@@ -1,10 +1,10 @@
-function generateElevationQueryString(lng, lat, lngstep, latstep, steps){
+function generateElevationQueryString(lat, lng, lngstep, latstep, steps){
     // Start building the query string with the parameter
     let queryString = '?locations=';
     // Iterate for the number of steps, adding a new coordinate pair
     // on each iteration
     for(let i = 0; i < steps; ++i) {
-        queryString += lat.toFixed(2) + '%2C' + lng.toFixed(2) + '|'
+        queryString += lat + '%2C' + lng + '|'
         lng += lngstep;
         lat += latstep;
     }
