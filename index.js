@@ -47,7 +47,7 @@ async function main() {
     let elevationValues = [];
     
     loadElevationValues(configuration, elevationValues).then(() => {
-        printElevationValues(elevationValues);
+        // printElevationValues(elevationValues);
         loadElevationValuesToFile('elevations.dat', elevationValues);
     });
 }
