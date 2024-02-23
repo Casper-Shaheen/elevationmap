@@ -35,7 +35,7 @@ function loadElevationValuesToFile(filename, elevations) {
     });
 }
 
-async function main() {
+function main() {
     
     let configuration = {
         lat: 27.9881 - (50*0.001),
@@ -47,8 +47,8 @@ async function main() {
     
     let elevationValues = [];
     
-    await loadElevationValues(elevationValues, configuration);
-    printElevationValues(elevationValues);
-    loadElevationValuesToFile('elevations.dat', elevationValues);
-}
+    loadElevationValues(elevationValues, configuration).then(() => {
+        printElevationValues(elevationValues);
+        loadElevationValuesToFile('elevations.dat', elevationValues);
+    });}
 main();
