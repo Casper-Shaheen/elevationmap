@@ -10,7 +10,7 @@ function generateElevationQueryString(lat, lng, lngstep, latstep, steps){
     }
     // Remove the last pipe character
     queryString = queryString.substring(0, queryString.length-1);
-    queryString += '&key=AIzaSyDih4nBfyrJZoMZlJK7p2mrJfzVqzwrhgQ'
+    queryString += '&key=AIzaSyAxUWke_-JlFPHR7mbmCsjZ_MS_YMtEwLs'
     return queryString
 }
 

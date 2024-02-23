@@ -1,19 +1,18 @@
 let fs = require('fs');
 let maw = require('./maps_api_wrapper');
 
-// Returns maps_api_wrapper data as JSON
-async function getMapsData(configuration) {
-    return new Promise(resolve => {
-        resolve(maw.getElevationData(configuration));
-    });
-}
-
 // Fills a provided array:elevationValues with elevations
-async function loadElevationValues(elevationValues, configuration) {
-    let maps_data = await getMapsData(configuration);
-    for(let i = 0; i < maps_data.results.length; ++i) {
-        elevationValues.push(maps_data.results[i].elevation);
-    }
+async function loadElevationValues(configuration, elevationValues) {
+    return new Promise(resolve => {
+        let mapsData = [];
+        maw.getMapsData(configuration, mapsData).then(() => {
+            for(let i = 0; i < mapsData[0].results.length; ++i) {
+                //console.log(i)
+                elevationValues.push(mapsData[0].results[i].elevation);
+            }
+            resolve();
+        });
+    });
 }
 
 // Prints provided array:elevationValues
@@ -23,7 +22,7 @@ function printElevationValues(elevationValues) {
     }
 }
 
-function loadElevationValuesToFile(filename, elevations) {
+async function loadElevationValuesToFile(filename, elevations) {
     let data='';
     for(let i = 0; i < elevations.length; ++i) {
         data += i + ' ' + elevations[i] + '\n';
@@ -35,7 +34,7 @@ function loadElevationValuesToFile(filename, elevations) {
     });
 }
 
-function main() {
+async function main() {
     
     let configuration = {
         lat: 27.9881 - (50*0.001),
@@ -47,8 +46,9 @@ function main() {
     
     let elevationValues = [];
     
-    loadElevationValues(elevationValues, configuration).then(() => {
+    loadElevationValues(configuration, elevationValues).then(() => {
         printElevationValues(elevationValues);
         loadElevationValuesToFile('elevations.dat', elevationValues);
-    });}
+    });
+}
 main();

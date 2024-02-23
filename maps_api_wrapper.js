@@ -5,7 +5,7 @@ const HOST = 'maps.googleapis.com';
 const PORT = 443;
 const PATH = '/maps/api/elevation/json'
 
-async function getElevationData(configuration) {
+async function getMapsData(configuration, mapsData) {
     return new Promise(resolve => {
         let requestOptions = {
             host: HOST,
@@ -27,14 +27,12 @@ async function getElevationData(configuration) {
                 data += chunk;
             });
             res.on('end', () => {
-                if(res.statusCode==400) {
-                    console.log(data);
-                }
-                resolve(JSON.parse(data));
+                mapsData.push(JSON.parse(data));
+                resolve();
             });
         });
         req.end();
     });   
 }
 
-module.exports.getElevationData = getElevationData;
+module.exports.getMapsData = getMapsData;
